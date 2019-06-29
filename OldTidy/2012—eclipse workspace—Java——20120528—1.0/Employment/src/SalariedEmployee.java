@@ -1,0 +1,4 @@
+
+public interface SalariedEmployee {
+	public int weekpay();//÷‹–Ω
+}
