@@ -13,6 +13,8 @@
 * PointCircleCylinder —— 类继承示例[点-圆面-圆柱体]
 * Employment —— 类&接口继承示例
 
+* ProcessScheduling —— 进程调度模拟[原名：Linux2.6进程调度与内存分配的可视化模拟]
+
 ### 小工具
 
 * TextEditor —— 文本编辑器示例
