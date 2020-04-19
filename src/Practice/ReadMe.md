@@ -11,6 +11,7 @@
 * ObjectArray —— 对象数组示例[以羊示例]
 * BankAccount —— 线程示例[存取款]
 * PointCircleCylinder —— 类继承示例[点-圆面-圆柱体]
+* Employment —— 类&接口继承示例
 
 ### 小工具
 
