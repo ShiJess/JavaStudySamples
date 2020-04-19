@@ -15,6 +15,8 @@
 
 * ProcessScheduling —— 进程调度模拟[原名：Linux2.6进程调度与内存分配的可视化模拟]
 
+* DiningProblem —— 哲学家就餐问题
+
 ### 小工具
 
 * TextEditor —— 文本编辑器示例
