@@ -1,4 +1,4 @@
-package huaxin.class49.group04.projcet01.notesystem;
+
 
 //引入所用到相应的包
 import java.awt.BorderLayout;

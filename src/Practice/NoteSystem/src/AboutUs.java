@@ -1,11 +1,10 @@
-package huaxin.class49.group04.projcet01.notesystem;
-
 	import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 	public class AboutUs extends JDialog {
 
 		/**
@@ -36,5 +35,3 @@ import javax.swing.JPanel;
 		}
 
 	}
-
-
