@@ -58,54 +58,55 @@ public class TextEditor extends JFrame {
 
     public TextEditor() {
         super("新建文本文件");
+        setTitle("\u6587\u672C\u7F16\u8F91\u5668");
         setUpUIComponent();
         setUpEventListener();
         setVisible(true);
     }
     
     private void setUpUIComponent() {
-        setSize(612, 361);
+        setSize(566, 401);
          
         JMenuBar menuBar = new JMenuBar();
         
         //文件
-        JMenu fileMenu = new JMenu("文件");
+        JMenu fileMenu = new JMenu("\u6587\u4EF6");
         
-        menuOpen = new JMenuItem("打开");
+        menuOpen = new JMenuItem("\u6253\u5F00");
         menuOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O,InputEvent.CTRL_MASK));
         fileMenu.add(menuOpen);
         
-        menuSave = new JMenuItem("保存");
+        menuSave = new JMenuItem("\u4FDD\u5B58");
         menuSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S,InputEvent.CTRL_MASK));
         fileMenu.add(menuSave);
         
-        menuSaveAs = new JMenuItem("另存为");
+        menuSaveAs = new JMenuItem("\u53E6\u5B58\u4E3A");
         fileMenu.add(menuSaveAs); 
 
-        menuClose = new JMenuItem("关闭");
+        menuClose = new JMenuItem("\u9000\u51FA");
         menuClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q,InputEvent.CTRL_MASK));
         fileMenu.add(menuClose);
         
      
         //编辑        
-        JMenu editMenu = new JMenu("编辑");
+        JMenu editMenu = new JMenu("\u7F16\u8F91");
         
-        menuCut = new JMenuItem("剪切");
+        menuCut = new JMenuItem("\u526A\u5207");
         menuCut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X,InputEvent.CTRL_MASK));
         editMenu.add(menuCut);
         
-        menuCopy = new JMenuItem("复制");
+        menuCopy = new JMenuItem("\u590D\u5236");
         menuCopy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C,InputEvent.CTRL_MASK));
         editMenu.add(menuCopy);
         
-        menuPaste = new JMenuItem("粘贴");
+        menuPaste = new JMenuItem("\u7C98\u8D34");
         menuPaste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V,InputEvent.CTRL_MASK));
         editMenu.add(menuPaste);
         
 
-        //关于        
-        JMenu aboutMenu = new JMenu("关于");
-        menuAbout = new JMenuItem("\u5173\u4E8ETextEditor");
+        //帮助        
+        JMenu aboutMenu = new JMenu("\u5E2E\u52A9");
+        menuAbout = new JMenuItem("\u5B58\u5728\u7684\u95EE\u9898");
         aboutMenu.add(menuAbout);
         
         menuBar.add(fileMenu);
@@ -116,6 +117,7 @@ public class TextEditor extends JFrame {
         	@Override
         	public void mousePressed(MouseEvent arg0) {
         		TextCount textcount=new TextCount();
+        		textcount.qu();
         	}
         });
         editMenu.add(menuItem);
@@ -124,15 +126,15 @@ public class TextEditor extends JFrame {
        
         setJMenuBar(menuBar);
         
-        // 文字编辑区域
+        //文字编辑区域
         textArea = new JTextArea();
-        textArea.setFont(new Font("宋体", Font.PLAIN, 16));
+        textArea.setFont(new Font("宋体", Font.PLAIN, 20));
         textArea.setLineWrap(true);
         JScrollPane panel = new JScrollPane(textArea,ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         Container contentPane = getContentPane();
         contentPane.add(panel, BorderLayout.CENTER);  
         
-        // 状态栏
+        //是否修改
         stateBar = new JLabel("未修改");
         stateBar.setHorizontalAlignment(SwingConstants.LEFT); 
         stateBar.setBorder(BorderFactory.createEtchedBorder());      
@@ -181,7 +183,7 @@ public class TextEditor extends JFrame {
         );
 
 
-        //关闭文件
+        //退出
         menuClose.addActionListener(
             new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -227,7 +229,7 @@ public class TextEditor extends JFrame {
             }
         );      
         
-        // 编辑区键盘事件
+        //编辑区键盘事件
         textArea.addKeyListener(
             new KeyAdapter() {
                 public void keyTyped(KeyEvent e) {
@@ -236,7 +238,7 @@ public class TextEditor extends JFrame {
             }
         );
 
-        // 编辑区鼠标事件
+        //编辑区鼠标事件
         textArea.addMouseListener(
             new MouseAdapter() {
                 public void mouseReleased(MouseEvent e) {
@@ -253,19 +255,19 @@ public class TextEditor extends JFrame {
     }
 
     private void openFile() {
-        if(isCurrentFileSaved()) { // 文件是否为保存状态
-            open(); // 打开
+        if(isCurrentFileSaved()) { //文件是否为保存状态
+            open(); //打开
         }
         else {
-            // 显示对话框
+            //显示对话框
             int option = JOptionPane.showConfirmDialog(
                     null, "文件已修改，是否保存？","保存文件？", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE, null);
             switch(option) { 
-                // 确认文件保存
+                //确认文件保存
                 case JOptionPane.YES_OPTION:
-                    saveFile(); // 保存文件
+                    saveFile(); //保存文件
                      break;
-               // 放弃文件保存
+               //放弃文件保存
                 case JOptionPane.NO_OPTION:
                     open();
                     break;
@@ -282,24 +284,24 @@ public class TextEditor extends JFrame {
     }
     private void open() {
         
-        // 显示文件选取的对话框
+        //显示文件选取的对话框
         int option = fileChooser.showDialog(null, null);
             
-        // 使用者按下确认键
+        //使用者按下确认键
         if(option == JFileChooser.APPROVE_OPTION) {
             try {
-                // 开启选取的文件
+                //开启选取的文件
                 BufferedReader buf = new BufferedReader(new FileReader(fileChooser.getSelectedFile()));
 
-                // 设定文件标题
+                //设定文件标题
                 setTitle(fileChooser.getSelectedFile().toString());
-                // 清除前一次文件
+                //清除前一次文件
                 textArea.setText("");
-                // 设定状态栏
+                //设定状态栏
                 stateBar.setText("未修改");
-                // 取得系统相依的换行字符
+                //取得系统相依的换行字符
                 String lineSeparator = System.getProperty("line.separator");
-                // 读取文件并附加至文字编辑区
+                //读取文件并附加至文字编辑区
                 String text;
                 while((text = buf.readLine()) != null) {
                     textArea.append(text);
@@ -317,19 +319,19 @@ public class TextEditor extends JFrame {
 
         File file = new File(getTitle());
 
-        // 若指定的文件不存在
+        //若指定的文件不存在
         if(!file.exists()) {
-            // 执行另存为
+            //执行另存为
             saveFileAs();
         }
         else {
             try {
-                // 开启指定的文件
+                //开启指定的文件
                 BufferedWriter buf = new BufferedWriter(new FileWriter(file));
-                // 将文字编辑区的文字写入文件
+                //将文字编辑区的文字写入文件
                 buf.write(textArea.getText());
                 buf.close();
-                // 设定状态栏为未修改
+                //设定状态栏为未修改
                 stateBar.setText("未修改");
             }
             catch(IOException e) {
@@ -339,21 +341,21 @@ public class TextEditor extends JFrame {
     }
 
     private void saveFileAs() {
-        // 显示文件对话框
+        //显示文件对话框
         int option = fileChooser.showSaveDialog(null);
 
-        // 如果确认选取文件
+        //如果确认选取文件
         if(option == JFileChooser.APPROVE_OPTION) {
-            // 取得选择的文件
+            //取得选择的文件
             File file = fileChooser.getSelectedFile();
             
-            // 在标题栏上设定文件名称
+            //在标题栏上设定文件名称
             setTitle(file.toString());
                 
             try {
-                // 建立文件
+                //建立文件
                 file.createNewFile();
-                // 进行文件保存
+                //进行文件保存
                 saveFile();
             }
             catch(IOException e) {
@@ -363,9 +365,9 @@ public class TextEditor extends JFrame {
     }
 
     private void closeFile() {
-        // 是否已保存文件
+        //是否已保存文件
         if(isCurrentFileSaved()) {
-            // 释放窗口资源，而后关闭程序
+            //释放窗口资源，而后关闭程序
             dispose();
         }
         else {
