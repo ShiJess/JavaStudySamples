@@ -21,4 +21,5 @@
 
 * TextEditor —— 文本编辑器示例
 * NoteSystem —— 记事本[来自网络，有文件乱码]
+* NotePad —— 记事本[来自课程设计，只含有界面]
 * Calculator —— 计算器
