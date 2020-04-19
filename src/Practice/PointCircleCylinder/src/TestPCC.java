@@ -1,5 +1,5 @@
 
-public class TestPPC {
+public class TestPCC {
 	public static void main(String arg[])
 	{
 		Point p1=new Point(1,1);//用含有参数的构造函数创建对象
