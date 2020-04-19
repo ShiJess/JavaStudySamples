@@ -26,7 +26,7 @@ public class TextCount extends JDialog {
 		int spaceCount = 0;//统计空格
 		int enterCount = 1;//统计换行
 		int charCount = 0;//统计字数
-		int acount = 0;//统计字符a的个数
+		int acount=0;
 		for(int i = 0; i < count.length; i++){
 			if(32 == count[i]){
 				spaceCount++;
@@ -78,18 +78,14 @@ public class TextCount extends JDialog {
 		labelRows.setBounds(96, 132, 52, 27);
 		getContentPane().add(labelRows);
 		
-		final JLabel label_a = new JLabel("'a'个数");
+		final JLabel label_a = new JLabel("字符a的个数");
 		label_a.setBounds(22, 160, 50, 27);
 		getContentPane().add(label_a);
 
 		final JLabel labela = new JLabel();
-		labela.setText(acount + "");
+		labela.setText(enterCount + "");
 		labela.setBounds(96, 160, 52, 27);
 		getContentPane().add(labela);
 	}
-	public void qu()//此仅为了主类中没有！号
-	{
-	}
-	
 
 }
