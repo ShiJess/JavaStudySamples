@@ -17,3 +17,12 @@ Java学习示例
 * Basic —— 基础语法等
 * Practice —— 练习or解决一些特定的问题
 * Action —— 实战-偏小项目
+
+
+
+
+Tomcat conf/server.xml
+
+docBase修改为对应程序目录
+
+<Context path="/javasamples" docBase="~\Jess.Java.Samples" />
