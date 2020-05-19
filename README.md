@@ -4,7 +4,8 @@ Java学习示例
 
 ## 内容来源
 
-整理旧资料，重新学习整理一下
+* 整理旧资料，重新学习整理一下
+* 整理书籍，清理过时书籍
 
 ## 说明
 
@@ -25,4 +26,4 @@ Tomcat conf/server.xml
 
 docBase修改为对应程序目录
 
-<Context path="/javasamples" docBase="~\Jess.Java.Samples" />
+`<Context path="/javasamples" docBase="~\Jess.Java.Samples" />`
